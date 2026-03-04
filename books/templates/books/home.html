@@ -6,11 +6,17 @@
 {% block content %}
     <h1>Hello, this is our selection of books:</h1>
             <ul>
-    <!--            template jinja.-->
+        <!--            template jinja.-->
                 {% for book in books %}
                 <li>
-                    {{ book.title }} - {{ book.content}}, by {{ book.author }}
-                    <a href="{% url 'delete_book' book.id %}">Delete</a>
+                  <details>
+                    <summary>{{ book.title }} — by {{ book.author }}</summary>
+                    <div>
+                      {{ book.content }}
+                    </div>
+                    <a href="{% url 'delete_book' book.id %}">🗑️</a>
+                    <a href="{% url 'update_book' book.id %}">✍️</a>
+                  </details>
                 </li>
                 {% endfor %}
             </ul>

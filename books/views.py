@@ -29,6 +29,24 @@ def create_book(request: HttpRequest):
         'form': form
     }
     return render(request, "books/book_form.html", context)
+
+def update_book(request: HttpRequest, pk: int):
+    # cartea deja existenta in baza de date
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == "POST":
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect("book_list")
+    else:
+        form = BookForm(instance=book)
+    return render(request, "books/book_form.html", {"form": form})
+
+def check_book_count(request: HttpRequest):
+    count = Book.objects.count()
+    return render(request, "books/book_count.html", {"book_count": count})
+
+
 def delete_book(request: HttpRequest, pk: int):
     book = get_object_or_404(Book, pk=pk)
     if request.method == "POST":

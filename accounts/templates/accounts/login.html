@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 
-{% block title%}{% endblock %}
+{% block title%}Login Here{% endblock %}
 
 {% block content %}
 
-    <h1>Book Form</h1>
+    <h1>Login</h1>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
-        <a href="{% url 'book_list' %}">Cancel</a>
+        <button type="submit">Login</button>
     </form>
 
 

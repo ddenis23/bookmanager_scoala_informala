@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}</title>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@intergrav/dev.css@4"/>
+  <link rel="stylesheet" href="static/main.css"/>
 </head>
 <body>
-    <nav>
-        <a href="{% url 'book_list' %}">Home</a>
-        <a href="{% url 'hello_world' %}">Hello</a>
-        <a href="{% url 'create_book' %}">Create a Book</a>
 
+  <nav>
+    <a href="{% url 'book_list' %}" >Home</a>
+    <a href="{% url 'create_book' %}" >Create a Book</a>
+    <a href="{% url 'check_book_count' %}" >Check Book Count</a>
+    <div>
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'register' %}">Register</a>
 
-    </nav>
+    </div>
+  </nav>
 
-    <main>
-        {% block content %}
-        <!--Child Templates-->
-        {% endblock %}
-    </main>
+  <main>
+    {% block content %}
+      <!--Child templates-->
+    {% endblock %}
+  </main>
+
 </body>
 </html>
